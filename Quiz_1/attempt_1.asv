@@ -1,0 +1,30 @@
+%% Task 1
+clear; clc; close all;
+
+%Geometric stress concentration factor. 
+% Compute the geometric stress concentration factor for the detail 
+% shown in Figure 08 with the dimensions:
+
+D = 56; %mm
+d = 39; %mm
+r = 5.2; %mm
+
+D_d = D/d; % 1.4359
+r_d = r/d; % 0.1333
+
+A_p = 1.13260;
+b_p = -0.36592;
+
+K_t = A_p*(r_d)^b_p
+
+%% Task 2
+clear; clc; close all;
+
+%Correction of the uncorrected fatigue strength. 
+% Compute the correction factor C_size for a 
+% detail with a round cross section as shown in Figure 15. 
+% The detail is exposed to non-rotating bending.
+
+d = 239 %mm
+
+C_size = 

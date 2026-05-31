@@ -1,0 +1,74 @@
+%% Task 1
+clear; clc; close all;
+
+%Geometric stress concentration factor. 
+% Compute the geometric stress concentration factor for the detail 
+% shown in Figure 08 with the dimensions:
+%  D = 48mm, d = 31mm, and r = 3.8mm.
+
+D = 48; %mm
+d = 31; %mm
+r = 3.8; %mm
+
+D_d = D/d; % 1.5484
+r_d = r/d; % 0.1226
+
+A_p = 1.13260;
+b_p = -0.36592;
+
+K_t = A_p*(r_d)^b_p
+
+%% Task 2
+clear; clc; close all;
+
+%Correction of the uncorrected fatigue strength. 
+% Compute the correction factor C_size for a 
+% detail with a round cross section as shown in Figure 15. 
+% The detail is exposed to rotating bending.
+
+d = 67; %mm
+A_95 = pi*abs((d^2-(0.95*d)^2)/4)
+d_equiv = sqrt(A_95/0.0766)
+
+C_size = 1.189 *d_equiv^(-0.097)
+
+%% Task 3
+clear; clc; close all;
+
+%Static design. 
+%A beam is loaded as shown in Figure 20. 
+% The dimensions are: 
+% L_1 = 700mm, L_2 = 75mm, L_3 = 54mm, L_4 = 37mm. 
+% The beam is loaded with P = -1300N, 
+% and it is made of the material SAE/AISI 1010 cold rolled. 
+% Compute the safety factor against static failure in point A 
+% (yielding or fracture which ever is relevant).
+
+L_1 = 700; %mm
+L_2 = 75; %mm
+L_3 = 54; %mm
+L_4 = 37 %mm
+L = L_1 - L_2; %mm
+D = 36; %mm
+P = -900*10^3; %Nmm
+r = D/2; %mm
+
+S_y = 276; %MPa
+S_ut = 496; %MPa
+% 18% > 5% (yielding material)
+
+
+sigma_xp = F/A
+
+sigma_x = sigma_xp; %MPa
+sigma_y = 0; %MPa
+sigma_z = 0; %MPa
+teta_xy = 0; %MPa
+teta_yz = 0; %MPa
+teta_zx = 0; %MPa
+
+%using von misses stress theorem to get average stress in the area
+ sigma_avg = sqrt((((sigma_x - sigma_y)^2)+((sigma_y-sigma_z)^2)+((sigma_z-sigma_x)^2)+(6*((teta_xy^2)+(teta_yz^2)+(teta_zx^2))))/2);
+
+ N = S_y/sigma_avg;
+
